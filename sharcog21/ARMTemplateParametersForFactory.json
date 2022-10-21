@@ -1,0 +1,51 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "sharcog21"
+		},
+		"AzureDataLakeStorage1_servicePrincipalCredential": {
+			"value": ""
+		},
+		"AzureDataLakeStorageShar_accountKey": {
+			"value": ""
+		},
+		"AzureDatabricks1_accessToken": {
+			"value": ""
+		},
+		"AzureSqlDB_KK_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabase2_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabaseShar_connectionString": {
+			"value": ""
+		},
+		"AzureSynapseAnalytics1_connectionString": {
+			"value": ""
+		},
+		"FileServer1_password": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://shardatalake.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_tenant": {
+			"value": "ce485962-a55d-4f78-ac7e-fbc5428e4b18"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_servicePrincipalId": {
+			"value": "f6e299c1-56f3-427b-938e-5bc5945a3e0c"
+		},
+		"AzureDataLakeStorageShar_properties_typeProperties_url": {
+			"value": "https://shardatalake.dfs.core.windows.net/"
+		},
+		"FileServer1_properties_typeProperties_host": {
+			"value": "C:\\"
+		},
+		"FileServer1_properties_typeProperties_userId": {
+			"value": "Student"
+		}
+	}
+}
