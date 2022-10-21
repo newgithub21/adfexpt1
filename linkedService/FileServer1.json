@@ -1,0 +1,17 @@
+{
+	"name": "FileServer1",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "FileServer",
+		"typeProperties": {
+			"host": "C:\\",
+			"userId": "Student",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI3Mzk1N2U2YS0zZWU2LTRiZGItYmQ5MS1iZDE4OWU3MDJiNjYiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "localintegrationRuntime1",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

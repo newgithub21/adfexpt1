@@ -1,0 +1,9 @@
+{
+	"name": "sharcog21",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "6de6337f-a4f2-44a8-bbf7-8d8240bf1e3a",
+		"tenantId": "ce485962-a55d-4f78-ac7e-fbc5428e4b18"
+	}
+}

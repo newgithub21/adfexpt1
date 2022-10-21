@@ -1,0 +1,19 @@
+{
+	"name": "MetadataDrivenCopyTask_qnp_ControlDS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase2",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MetadataDrivenCopyTask_qnp_20221010"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"table": "MainControlTable_qnp"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

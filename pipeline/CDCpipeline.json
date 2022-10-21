@@ -1,0 +1,37 @@
+{
+	"name": "CDCpipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "CDCdataflow",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "CDCdataflow",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine",
+					"continuationSettings": {
+						"customizedCheckpointKey": "5691cf0c-6fad-42b8-a2a8-7ed4cc8aebeb"
+					}
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2022-10-19T06:37:19Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,33 @@
+{
+	"name": "AzureSqlCDCTgt",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseShar",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "name",
+				"type": "varchar"
+			},
+			{
+				"name": "date1",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "target1"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,19 @@
+{
+	"name": "MetadataDrivenCopyTask_fts_ControlDS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseShar",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MetadataDrivenCopyTask_fts_20221010"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"table": "MainControlTable_fts"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
