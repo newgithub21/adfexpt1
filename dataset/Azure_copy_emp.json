@@ -9,8 +9,7 @@
 		"type": "AzureSqlTable",
 		"schema": [],
 		"typeProperties": {
-			"schema": "SalesLT",
-			"table": "Address"
+			"table": "emp_latest"
 		}
 	}
 }
