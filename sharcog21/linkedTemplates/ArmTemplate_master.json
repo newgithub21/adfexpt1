@@ -79,6 +79,10 @@
 			"type": "string",
 			"defaultValue": "https://shardatalake.dfs.core.windows.net/"
 		},
+		"trigger_strorage_properties_pipeline_data_target_parameters_fname": {
+			"type": "string",
+			"defaultValue": "@triggerBody().filename"
+		},
 		"trigger_strorage_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/ef928dd4-3ea0-4de8-acb4-3e67077908ed/resourceGroups/ADF/providers/Microsoft.Storage/storageAccounts/shardatalake"
@@ -201,6 +205,9 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"trigger_strorage_properties_pipeline_data_target_parameters_fname": {
+						"value": "[parameters('trigger_strorage_properties_pipeline_data_target_parameters_fname')]"
 					},
 					"trigger_strorage_properties_typeProperties_scope": {
 						"value": "[parameters('trigger_strorage_properties_typeProperties_scope')]"

@@ -7,6 +7,10 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "sharcog21"
 		},
+		"trigger_strorage_properties_pipeline_data_target_parameters_fname": {
+			"type": "string",
+			"defaultValue": "@triggerBody().filename"
+		},
 		"trigger_strorage_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/ef928dd4-3ea0-4de8-acb4-3e67077908ed/resourceGroups/ADF/providers/Microsoft.Storage/storageAccounts/shardatalake"
@@ -670,7 +674,6 @@
 								"storeSettings": {
 									"type": "AzureBlobFSReadSettings",
 									"recursive": true,
-									"wildcardFileName": "CTS_*",
 									"enablePartitionDiscovery": false
 								},
 								"formatSettings": {
@@ -702,7 +705,12 @@
 							{
 								"referenceName": "DelimitedText1",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"fname": {
+										"value": "@pipeline().parameters.fname",
+										"type": "Expression"
+									}
+								}
 							}
 						],
 						"outputs": [
@@ -1238,7 +1246,9 @@
 							"referenceName": "pipeline_data_target",
 							"type": "PipelineReference"
 						},
-						"parameters": {}
+						"parameters": {
+							"fname": "[parameters('trigger_strorage_properties_pipeline_data_target_parameters_fname')]"
+						}
 					}
 				],
 				"type": "BlobEventsTrigger",
