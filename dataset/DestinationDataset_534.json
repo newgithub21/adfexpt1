@@ -1,0 +1,15 @@
+{
+	"name": "DestinationDataset_534",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseShar",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"table": "emp_latest"
+		}
+	}
+}
