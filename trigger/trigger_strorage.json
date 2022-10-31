@@ -16,8 +16,7 @@
 		],
 		"type": "BlobEventsTrigger",
 		"typeProperties": {
-			"blobPathBeginsWith": "/data/blobs/CTS_*",
-			"blobPathEndsWith": ".csv",
+			"blobPathBeginsWith": "/data/blobs/CTS_",
 			"ignoreEmptyBlobs": true,
 			"scope": "/subscriptions/ef928dd4-3ea0-4de8-acb4-3e67077908ed/resourceGroups/ADF/providers/Microsoft.Storage/storageAccounts/shardatalake",
 			"events": [
