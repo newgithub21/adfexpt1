@@ -2874,8 +2874,7 @@
 				],
 				"type": "BlobEventsTrigger",
 				"typeProperties": {
-					"blobPathBeginsWith": "/data/blobs/CTS_*",
-					"blobPathEndsWith": ".csv",
+					"blobPathBeginsWith": "/data/blobs/CTS_",
 					"ignoreEmptyBlobs": true,
 					"scope": "[parameters('trigger_strorage_properties_typeProperties_scope')]",
 					"events": [
