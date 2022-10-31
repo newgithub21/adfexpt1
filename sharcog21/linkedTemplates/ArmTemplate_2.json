@@ -718,6 +718,11 @@
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
 				},
+				"parameters": {
+					"fname": {
+						"type": "string"
+					}
+				},
 				"annotations": []
 			},
 			"dependsOn": []
@@ -1238,7 +1243,8 @@
 				],
 				"type": "BlobEventsTrigger",
 				"typeProperties": {
-					"blobPathBeginsWith": "/data/blobs/CTS_",
+					"blobPathBeginsWith": "/data/blobs/CTS_*",
+					"blobPathEndsWith": ".csv",
 					"ignoreEmptyBlobs": true,
 					"scope": "[parameters('trigger_strorage_properties_typeProperties_scope')]",
 					"events": [
