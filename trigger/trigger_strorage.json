@@ -1,0 +1,24 @@
+{
+	"name": "trigger_strorage",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pipeline_data_target",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/data/blobs/CTS_",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/ef928dd4-3ea0-4de8-acb4-3e67077908ed/resourceGroups/ADF/providers/Microsoft.Storage/storageAccounts/shardatalake",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
