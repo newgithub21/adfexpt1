@@ -1,0 +1,15 @@
+{
+	"name": "DestinationDataset_6w8",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseShar",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"table": "AzureBlobFSFile"
+		}
+	}
+}
