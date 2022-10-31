@@ -79,6 +79,10 @@
 			"type": "string",
 			"defaultValue": "https://shardatalake.dfs.core.windows.net/"
 		},
+		"trigger_strorage_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/ef928dd4-3ea0-4de8-acb4-3e67077908ed/resourceGroups/ADF/providers/Microsoft.Storage/storageAccounts/shardatalake"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -197,6 +201,9 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"trigger_strorage_properties_typeProperties_scope": {
+						"value": "[parameters('trigger_strorage_properties_typeProperties_scope')]"
 					}
 				}
 			},

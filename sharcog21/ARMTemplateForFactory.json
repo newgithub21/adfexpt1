@@ -78,6 +78,10 @@
 		"datalakemain21_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://shardatalake.dfs.core.windows.net/"
+		},
+		"trigger_strorage_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/ef928dd4-3ea0-4de8-acb4-3e67077908ed/resourceGroups/ADF/providers/Microsoft.Storage/storageAccounts/shardatalake"
 		}
 	},
 	"variables": {
@@ -2826,6 +2830,36 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/AzureSqlTable1')]",
 				"[concat(variables('factoryId'), '/datasets/AzureSqlTable2')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/trigger_strorage')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Stopped",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pipeline_data_target",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/data/blobs/CTS_",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('trigger_strorage_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pipeline_data_target')]"
 			]
 		}
 	]
