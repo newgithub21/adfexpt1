@@ -62,6 +62,11 @@
 				]
 			}
 		],
+		"parameters": {
+			"fname": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
