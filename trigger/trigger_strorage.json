@@ -2,12 +2,15 @@
 	"name": "trigger_strorage",
 	"properties": {
 		"annotations": [],
-		"runtimeState": "Stopped",
+		"runtimeState": "Started",
 		"pipelines": [
 			{
 				"pipelineReference": {
 					"referenceName": "pipeline_data_target",
 					"type": "PipelineReference"
+				},
+				"parameters": {
+					"fname": "@triggerBody().filename"
 				}
 			}
 		],
