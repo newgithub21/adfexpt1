@@ -1,0 +1,12 @@
+{
+	"name": "Azure_copy_emp",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseShar",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}
