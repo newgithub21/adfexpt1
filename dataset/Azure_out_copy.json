@@ -1,0 +1,12 @@
+{
+	"name": "Azure_out_copy",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseShar",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}
