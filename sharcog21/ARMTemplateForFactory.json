@@ -182,6 +182,135 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/CopyPipeline_6w8')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy_6w8",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [
+							{
+								"name": "Source",
+								"value": "data//"
+							},
+							{
+								"name": "Destination",
+								"value": ".AzureBlobFSFile"
+							}
+						],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobFSReadSettings",
+									"recursive": true,
+									"wildcardFileName": "*",
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings",
+									"skipLineCount": 0
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"tableOption": "autoCreate"
+							},
+							"enableStaging": false,
+							"validateDataConsistency": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "eid",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "eid",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "ename",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "ename",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "revenue",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "revenue",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "did",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "did",
+											"type": "String"
+										}
+									}
+								],
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "SourceDataset_6w8",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "DestinationDataset_6w8",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/SourceDataset_6w8')]",
+				"[concat(variables('factoryId'), '/datasets/DestinationDataset_6w8')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/CopyPipeline_cdtodltables')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -1859,6 +1988,26 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_6w8')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabaseShar",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"table": "AzureBlobFSFile"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabaseShar')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/DestinationDataset_anq')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -2189,6 +2338,50 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabaseShar')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SourceDataset_6w8')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorageShar",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileSystem": "data"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "eid",
+						"type": "String"
+					},
+					{
+						"name": "ename",
+						"type": "String"
+					},
+					{
+						"name": "revenue",
+						"type": "String"
+					},
+					{
+						"name": "did",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorageShar')]"
 			]
 		},
 		{
@@ -2564,6 +2757,38 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/trigger_strorage')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pipeline_data_target",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"fname": "[parameters('trigger_strorage_properties_pipeline_data_target_parameters_fname')]"
+						}
+					}
+				],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/data/blobs/CTS_",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('trigger_strorage_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pipeline_data_target')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/localintegrationRuntime1')]",
 			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
 			"apiVersion": "2018-06-01",
@@ -2852,38 +3077,6 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/AzureSqlTable1')]",
 				"[concat(variables('factoryId'), '/datasets/AzureSqlTable2')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/trigger_strorage')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Stopped",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "pipeline_data_target",
-							"type": "PipelineReference"
-						},
-						"parameters": {
-							"fname": "[parameters('trigger_strorage_properties_pipeline_data_target_parameters_fname')]"
-						}
-					}
-				],
-				"type": "BlobEventsTrigger",
-				"typeProperties": {
-					"blobPathBeginsWith": "/data/blobs/CTS_",
-					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('trigger_strorage_properties_typeProperties_scope')]",
-					"events": [
-						"Microsoft.Storage.BlobCreated"
-					]
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/pipeline_data_target')]"
 			]
 		}
 	]
